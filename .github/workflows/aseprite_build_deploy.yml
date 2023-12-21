@@ -7,14 +7,6 @@ env:
   BUILD_TYPE: Release
 
 jobs:
-  clear-cache:
-    name: Clear version cache
-    runs-on: ubuntu-latest
-    steps:
-    - name: Clear cache
-      run: |
-        echo "EOF" > $GITHUB_OUTPUT
-
   check-version:
     name: Check latest Aseprite release
     runs-on: ubuntu-latest
