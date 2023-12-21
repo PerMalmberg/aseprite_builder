@@ -7,6 +7,14 @@ env:
   BUILD_TYPE: Release
 
 jobs:
+  clear-cache:
+    name: Clear version cache
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clear cache
+      run: |
+        echo "EOF" > $GITHUB_OUTPUT
+
   check-version:
     name: Check latest Aseprite release
     runs-on: ubuntu-latest
@@ -43,7 +51,7 @@ jobs:
     - name: Create Release
       id: create_release
       if: steps.should_build.outputs.should_build
-      uses: actions/create-release@v1
+      uses: softprops/action-gh-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
